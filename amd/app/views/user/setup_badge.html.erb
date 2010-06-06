@@ -1,0 +1,11 @@
+<%= error_messages_for 'user' %>
+
+<h3>Setup yer badge</h3>
+
+<%= form_tag :action => 'setup_badge' do %>
+
+  <label for="badge_id">What's da badge numbah?</label><br/>
+  <%= text_field "user", "badge_id", :size => 20 %><br/>
+
+  <%= submit_tag "Submit" %>
+<%= end %>
