@@ -1,0 +1,106 @@
+A web framework for Finite-State-Machine based games.
+
+LICENSE
+The MIT License
+
+Copyright (c) 2010, Sean T. McBeth
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+
+CONTENTS
+	0. License
+	1. Introduction
+	2. Data Model
+	3. Applications
+
+
+INTRODUCTION
+	This is a collection of python packages intended to be ran in django
+	for the purpose of creating web applications that represent some sort
+	of "game". 
+	
+	These games are all encoded as state transitions through a finite state 
+	machine. Game implementation is primarily an encoding of the game states
+	in the data model and a user interface on top to present the associated
+	data in a meaningful way.
+	
+
+DATA MODEL
+	This is the current data model
+	from django.db import models
+
+	
+	Faction(name)
+		A faction is a team of players in a game. Games may share factions or
+		create their own.
+
+
+	UserData [STUB](user, x, y, zone, buttons, when)
+		This data is going to eventually come from a pycassa interface. It represents
+		the live data from the conference floor as users move around. The zone
+		field essentially represents what RFID reader the user was closest to. 
+		Sometimes, zone information is all we need, a chance to speed up processing.
+		The buttons field is an 8-bit bitfield, indicating which buttons were 
+		pressed when the badge was scanned
+
+
+	Hotspot(name, x, y, radius, zone, buttons)
+		In a way, hotspots are almost like virtual attendees. They will exist on the 
+		conference floor without having a physical embodiment. They cover an area,
+		rather than being a single point. And they may optionally require a 
+		certain button configuration to be pressed to indicate that the user was 
+		intentially visiting the hotspot.
+
+
+	Flag(name, content, points, minDate, hotspot, faction, minFactionCount, isHidden, isInternal)
+		The user will "pick up" these flags throughout the course of gameplay.
+		Flags are used to determine if the user has performed the necessary actions
+		to receive updates to the story line or reach the goal of the game.
+			content:
+				the text that will be emailed to the user when they pick up the flag. 
+			points: 
+				the number of raffle ticket points picking up the flag gives.
+			minDate: 
+				The first time the flag is capable of being picked up (used to 
+				lock certain features of the games until a certain time has been 
+				reached)
+			hotspot: 
+				The area the user has to be in to pick up the flag
+			faction: 
+				The faction the user has to be in to pick up the flag
+			minFactionCount: 
+				The minimum number of other faction members that need to be with 
+				the user in order for all users to pick up the flag
+			isHidden: 
+				Indicates that the flag is not visible until the user has obtained it
+			isInternal: 
+				Indicates that the flag is never visible to the user, it's used 
+				only for internal processing.
+
+
+	FlagPrereq(flag, prereqs)
+		Some flags will have prerequisites of other flags before they can be picked up
+	
+	
+	FlagCapture(flag, user, when)
+		A record of when a user has picked up a specific flag
+
+APPLICATIONS

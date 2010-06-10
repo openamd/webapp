@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FSM</title>
+	<link rel="stylesheet" type="text/css" href="media/style.css">
+</head> 
+<body> 
+	<div id="wrapper"> 
+		<div class="spacer" id="top"></div> 
+		<div id="content"> 
+		<h1>Test</h1>
+			{% if users %}
+			<ul>Users
+				{% for user in users %}
+					<li><a href="/arg/user/">{{user}}</a></li>
+				{% endfor %}
+			</ul>
+			{% else %}
+				No users...
+			{% endif %}
+		</div> 
+		<div class="spacer" id="bottom"></div> 
+	</div> 
+</body> 
+</html> 
