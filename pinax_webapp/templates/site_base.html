@@ -1,0 +1,90 @@
+{% load i18n %}
+{% load openid_tags %}
+{% load ifsetting_tag %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL  }}css/amd.css" /> 
+
+<div id="container"> 
+{% block login %}
+    {% if user.is_authenticated %}
+        {% openid_icon openid user %}<b>{{ user }}</b> | <a href="{% url acct_email %}">{% trans "Account" %}</a> | {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a> | {% endif %}<a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
+    {% else %}
+        <a href="{% url acct_login %}">{% trans "Login" %}</a> {% ifsetting ACCOUNT_OPEN_SIGNUP %}{% trans "or" %} <a href="{% url acct_signup %}"><b>{% trans "Sign up" %}</b></a>{% endifsetting %}
+    {% endif %}
+{% endblock %}
+
+{% block headers %}
+<div id="header"> 
+  <a href="{% url home %}">
+    <img src="{{ STATIC_URL }}images/openamd_black.png" style="float:left;"/>
+  </a>
+    <img src="{{ STATIC_URL }}images/tnh_temp_logo2.png" style="float:right;" /> 
+</div> 
+{% endblock %}
+
+{% block navigation %}
+<div id="navigation"> 
+  <ul> 
+    <li><a href="#">Home</a></li> 
+    <li><a href="#">Friends</a></li> 
+    <li><a href="#">Profile</a></li> 
+    <li><a href="#">Games</a></li> 
+    <li><a href="#">Notifications</a></li> 
+    <li><a href="#">Settings</a></li> 
+  </ul> 
+</div> 
+{% endblock %}
+
+<div id="content-container"> 
+{% block content %}
+  <div id="content"> 
+    <h2> 
+      Page heading - content area. stuff goes here. application content, page content, settings, etc
+    </h2> 
+    <p> 
+      Lorem ipsum dolor sit amet consect etuer adipi scing elit sed diam nonummy nibh euismod tinunt ut laoreet dolore magna aliquam erat volut. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+    </p> 
+    <p> 
+      Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    </p> 
+    <p> 
+      Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+    </p> 
+  </div> 
+{% endblock %}
+
+{% block aside %}
+    {% if user.is_authenticated %}
+        <ul class="tabs">{% spaceless %}
+            <li id="tab_profile"><a href="{% url profile_detail user %}">{% trans "Profile" %}</a></li>
+            <li id="tab_notices"><a href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} ({{ notice_unseen_count }}){% endif %}</a></li>
+        {% endspaceless %}</ul>
+    {% endif %}
+    <div id="aside"> 
+      <h3>Applications</h3> 
+      
+      <div class="appmenu"><a href="">People Near You (Neighbor finder)</a></div> 
+      <div class="appmenu"><a href="">Recommender</a></div> 
+      <div class="appmenu"><a href="">Talks Bookmarker</a></div> 
+      <div class="appmenu"><a href="">Twitter your location</a></div> 
+      <div class="appmenu"><a href="">Realtime Map</a></div> 
+ 
+    </div>
+{% endblock %}
+
+{% block footer %}
+<div id="footer">
+    {% trans "&copy; 2010 &lt;OpenAMD&gt;" %}
+    - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
+    - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>
+</div>
+{% endblock %}
+
+</div>
+
+</body>
+</html>
