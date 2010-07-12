@@ -1,4 +1,4 @@
-# pinax.fcgi is configured to live in projects/nextbadge_webapp/deploy.
+# pinax.fcgi is configured to live in projects/pinax_webapp/deploy.
 
 import os
 import sys
@@ -9,7 +9,7 @@ from site import addsitedir
 sys.path.insert(0, abspath(join(dirname(__file__), "../../")))
 
 from django.conf import settings
-os.environ["DJANGO_SETTINGS_MODULE"] = "nextbadge_webapp.settings"
+os.environ["DJANGO_SETTINGS_MODULE"] = "pinax_webapp.settings"
 
 sys.path.insert(0, join(settings.PINAX_ROOT, "apps"))
 sys.path.insert(0, join(settings.PROJECT_ROOT, "apps"))

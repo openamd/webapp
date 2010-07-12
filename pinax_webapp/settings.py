@@ -66,7 +66,7 @@ STATIC_URL = '/site_media/static/'
 
 # Additional directories which hold static files
 STATICFILES_DIRS = (
-    ('nextbadge_webapp', os.path.join(PROJECT_ROOT, 'media')),
+    ('pinax_webapp', os.path.join(PROJECT_ROOT, 'media')),
     ('pinax', os.path.join(PINAX_ROOT, 'media', PINAX_THEME)),
 )
 
@@ -96,7 +96,7 @@ MIDDLEWARE_CLASSES = (
     'pinax.middleware.security.HideSensistiveFieldsMiddleware',
 )
 
-ROOT_URLCONF = 'nextbadge_webapp.urls'
+ROOT_URLCONF = 'pinax_webapp.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, "templates"),
