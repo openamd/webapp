@@ -35,7 +35,8 @@ else:
 urlpatterns = patterns('',
     url(r'^$', homepage, name="home"),
     url(r'^success/$', direct_to_template, {"template": "waitinglist/success.html"}, name="waitinglist_sucess"),
-    
+    url(r'^register/$', direct_to_template, {"template": "register.html"}),
+
     url(r'^admin/invite_user/$', 'signup_codes.views.admin_invite_user', name="admin_invite_user"),
     url(r'^account/signup/$', signup_view, name="acct_signup"),
     
