@@ -180,8 +180,9 @@ LOGIN_REDIRECT_URLNAME = "what_next"
 
 AUTHENTICATED_EXEMPT_URLS = [
     r"^/$",
-    r"^/success/$",
     r"^/account/signup/$",
+    r"^/success/$",
+    r"^/register/$",
     r"^/account/password_reset",
     r"^/account/confirm_email",
     r"/openid"
