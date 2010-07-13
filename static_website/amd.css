@@ -1,0 +1,186 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	background-color: #000;
+	color: #CCC;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	background-image:url(images/wavebg5.png);
+		background-position:right top;
+		background-repeat:no-repeat;
+}
+
+a, a:visited {
+	color:#0C6;
+	text-decoration:none;
+}
+
+a:hover, a:active {
+		color:#0F3;
+		text-decoration: underline;
+}
+
+.header {
+	height:200px;
+	width:100%;
+/*	border: thin #FFF solid;*/
+}
+
+.blackbox {
+		background-color:#000;
+		width:650px;
+		height:auto;
+		border: thin solid #333;
+}
+
+.topmenu {
+	background-color:#000;
+	background-image: url(images/tnh_temp_logo.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+	width:540px;
+	height:90px;
+	border: thin solid #333;
+	font-size:12pt;
+	float:right;
+	text-align:right;
+	vertical-align:top;
+	padding:5px;
+}
+
+.appmenu {
+	background-color:#333;
+	height: 20px;
+	width:250px;
+	border:thin solid #666;
+	padding:5px;
+	margin:2px;
+	
+}
+
+.notifications {
+	background-color:#333;
+	min-height: 20px;
+	height: auto;
+	width:250px;
+	border:thin solid #666;
+	padding:2px;
+	margin:2px;
+	text-align:right;
+	
+}
+
+.notificationsfeed {
+	font-size:11pt;
+	line-height: 20px;
+	}
+	
+.notifi_sub {
+	text-align:left;
+	
+	}
+
+.footer {
+	font-size:10px;
+	color:#666666;
+	text-align:center;
+	
+}
+
+h3 {
+	padding:3px; 
+
+	
+	}
+
+@charset "UTF-8";
+/* CSS Document */
+
+#container
+{
+	margin: 0 auto;
+	width: 100%;
+	/* background: #fff; */
+}
+
+#header
+{
+	/* background: #ccc; */
+	padding: 20px;
+}
+
+#header h1 { margin: 0; }
+
+#navigation
+{
+	float: left;
+	width: 100%;
+	background: #333;
+}
+
+#navigation ul
+{
+	margin: 0;
+	padding: 0;
+}
+
+#navigation ul li
+{
+	list-style-type: none;
+	display: inline;
+}
+
+#navigation li a
+{
+	display: block;
+	float: left;
+	padding: 5px 10px;
+	color: #fff;
+	text-decoration: none;
+	border-right: 1px solid #fff;
+}
+
+#navigation li a:hover { background: #383; }
+
+#content-container
+{
+	float: left;
+	width: 100%;
+	background: #000; 
+}
+
+#content
+{
+	clear: left;
+	float: left;
+	width: 60%;
+	padding: 20px 0;
+	margin: 0 0 0 4%;
+	display: inline;
+	background: #000;
+}
+
+#content h2 { margin: 0; }
+
+#aside
+{
+	float: right;
+	width: 26%;
+	padding: 20px 0;
+	margin: 0 3% 0 0;
+	display: inline;
+	background: #000;
+}
+
+#aside h3 { margin: 0; }
+
+#footer
+{
+	clear: left;
+	background: #000;
+	text-align: right;
+	padding: 20px;
+	height: 1%;
+	font-size: 9pt;
+}

@@ -1,6 +1,0 @@
-As stated before design as if anything may change at any point.
-
-Use Twissandra as a *starting* point. Twissandra assumes that it 
-will be tied to cassandra 0.6.1. This is not a realistic assumption.
-
-This file should be modified or removed as changes get underway.
