@@ -1,129 +1,58 @@
+{% extends "site_base.html" %}
+
 {% load i18n %}
 {% load openid_tags %}
 {% load ifsetting_tag %}
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"> 
-<head> 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL  }}css/amd.css" /> 
-
-<div id="container"> 
-{% block login %}
-    {% if user.is_authenticated %}
-        {% openid_icon openid user %}<b>{{ user }}</b> | <a href="{% url acct_email %}">{% trans "Account" %}</a> | {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a> | {% endif %}<a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
-    {% else %}
-        <a href="{% url acct_login %}">{% trans "Login" %}</a> {% ifsetting ACCOUNT_OPEN_SIGNUP %}{% trans "or" %} <a href="{% url acct_signup %}"><b>{% trans "Sign up" %}</b></a>{% endifsetting %}
-    {% endif %}
-{% endblock %}
-
-{% block headers %}
-<div id="header"> 
-  <a href="{% url home %}">
-    <img src="{{ STATIC_URL }}images/openamd_black.png" style="float:left;"/>
-  </a>
-    <img src="{{ STATIC_URL }}images/tnh_temp_logo2.png" style="float:right;" /> 
-</div> 
-{% endblock %}
-
-{% block navigation %}
-<div id="navigation"> 
-	<ul> 
-			<li><a href="/">Home</a></li> 
-			<li><a href="/profile">Profile</a></li> 
-			<li><a href="/friends">Friends</a></li> 
-			<li><a href="/applications">Applications</a></li> 
-			<li><a href="/notifications">Notifications</a></li> 
-            		<li><a href="/settings">Settings</a></li> 
-	</ul> 
-</div> 
-{% endblock %}
-
-<div id="content-container"> 
+ 
 {% block content %}
 
-		<div id="content"> 
-			<h2> 
-				Profile Settings
-			</h2> 
+<div id="content"> 
+  <h2>Profile Settings</h2> 
  
-<p> 
-<B>Your Handle:</B> <input type="text" size="50" value="{{ handle }}" maxlength="25" name="handle" /> 
-<Br /><Br /> 
-<b>Choose Userpic:</b> <input type="file" /><br /><Br /> 
-<b>Gender:</b> <input type="radio" name="gender" value="male" /> Male <input type="radio" name="gender" value="female" /> Female <input type="radio" name="gender" value="other" /> Other<br /><br /> 
-<b>Age:</b> <input type="text" size="10" maxlength="2" name="age" value="{{ age }}"/><br /><Br /> 
-<B>Home Location: </B><input type="text" size="50" name="homeloc" value="{{ homeloc }}"/><br /><Br /> 
-<b>Interests:</b><Br /> 
-<div style="width:425px; height:220px;"> 
-<div style="width:210; float:left;"> 
+  <p> 
+    <B>Your Handle:</B> <input type="text" size="50" value="{{ handle }}" maxlength="25" name="handle" /> 
+    <Br /><Br /> 
+    <b>Choose Userpic:</b> <input type="file" /><br /><Br /> 
+    <b>Gender:</b> <input type="radio" name="gender" value="male" /> Male <input type="radio" name="gender" value="female" /> Female <input type="radio" name="gender" value="other" /> Other<br /><br /> 
+    <b>Age:</b> <input type="text" size="10" maxlength="2" name="age" value="{{ age }}"/><br /><Br /> 
+    <B>Home Location: </B><input type="text" size="50" name="homeloc" value="{{ homeloc }}"/><br /><Br /> 
+    <b>Interests:</b><Br /> 
+    <div style="width:425px; height:220px;"> 
+      <div style="width:210; float:left;"> 
  
-<input type="checkbox" name=""  /> New Tech <br /> 
-<input type="checkbox" name=""  /> Activism <br /> 
-<input type="checkbox" name=""  /> Radio <br /> 
-<input type="checkbox" name=""  /> Lockpicking<br /> 
-<input type="checkbox" name=""  /> Crypto<br /> 
-<input type="checkbox" name=""  /> Privacy <br /> 
-<input type="checkbox" name=""  /> Ethics <br /> 
-<input type="checkbox" name=""  /> Telephones <br /> 
-<input type="checkbox" name=""  /> Social Engineering <br /> 
-<input type="checkbox" name=""  /> Hackerspaces <br /> 
-<input type="checkbox" name=""  /> Hardware Hacking<br /> 
+	<input type="checkbox" name=""  /> New Tech <br /> 
+	<input type="checkbox" name=""  /> Activism <br /> 
+	<input type="checkbox" name=""  /> Radio <br /> 
+	<input type="checkbox" name=""  /> Lockpicking<br /> 
+	<input type="checkbox" name=""  /> Crypto<br /> 
+	<input type="checkbox" name=""  /> Privacy <br /> 
+	<input type="checkbox" name=""  /> Ethics <br /> 
+	<input type="checkbox" name=""  /> Telephones <br /> 
+	<input type="checkbox" name=""  /> Social Engineering <br /> 
+	<input type="checkbox" name=""  /> Hackerspaces <br /> 
+	<input type="checkbox" name=""  /> Hardware Hacking<br /> 
+      </div> 
+      <div style="width:210px; float:right;"> 
+	<input type="checkbox" name=""  /> Nostalgia <br /> 
+	<input type="checkbox" name=""  /> Communities <br /> 
+	<input type="checkbox" name=""  /> Science <br /> 
+	<input type="checkbox" name=""  /> Government <br /> 
+	<input type="checkbox" name=""  /> Network Security<br /> 
+	<input type="checkbox" name=""  /> Malicious Software <br /> 
+	<input type="checkbox" name=""  /> Pen Testing<br /> 
+	<input type="checkbox" name=""  /> Web <br /> 
+	<input type="checkbox" name=""  /> Niche Hacks<br /> 
+	<input type="checkbox" name=""  /> Media <br /> 
+      </div>
+    </div>
+    <Br /><br /> 
+    <input type="submit" value="Save Profile" /> 
+  </p> 
+  
 </div> 
-<div style="width:210px; float:right;"> 
- <input type="checkbox" name=""  /> Nostalgia <br /> 
-<input type="checkbox" name=""  /> Communities <br /> 
-<input type="checkbox" name=""  /> Science <br /> 
-<input type="checkbox" name=""  /> Government <br /> 
-<input type="checkbox" name=""  /> Network Security<br /> 
-<input type="checkbox" name=""  /> Malicious Software <br /> 
-<input type="checkbox" name=""  /> Pen Testing<br /> 
-<input type="checkbox" name=""  /> Web <br /> 
-<input type="checkbox" name=""  /> Niche Hacks<br /> 
-<input type="checkbox" name=""  /> Media <br /> 
-</div></div> 
-<Br /><br /> 
-<input type="submit" value="Save Profile" /> 
-			</p> 
-			
-		</div> 
  
 {% endblock %}
 
 {% block aside %}
-
-<div id="aside"> 
-        <h3>Notifications</h3> 
-        <div class="notifications"> 
-		<ul class="notifi_sub"><li><a href="">Friend1</a> is online!</li> 
-<li><a href="">Friend4</a> is now in <a href="">Talk76</a> </li> 
-<li>A new person has just registered! <a href="">View -></a></li> 
-</ul> 
-<a href="notifications.html">View your feed...</a> 
-</div> 
-			<h3> 
-				Applications
-			</h3> 
- 
-				<div class="appmenu"><a href="">People Near You (Neighbor finder)</a></div> 
-<div class="appmenu"><a href="">Recommender</a></div> 
-<div class="appmenu"><a href="">Talks Bookmarker</a></div> 
-<div class="appmenu"><a href="">Twitter your location</a></div> 
-<div class="appmenu"><a href="">Realtime Map</a></div> 
- 
-		</div> 
-
+  {{ block.super %}
 {% endblock %}
-
-{% block footer %}
-<div id="footer">
-    {% trans "&copy; 2010 &lt;OpenAMD&gt;" %}
-    - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
-    - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>
-</div>
-{% endblock %}
-
-</div>
-
-</body>
-</html>

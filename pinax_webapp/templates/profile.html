@@ -1,124 +1,52 @@
+{% extends "site_base.html" %}
+
 {% load i18n %}
 {% load openid_tags %}
 {% load ifsetting_tag %}
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"> 
-<head> 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL  }}css/amd.css" /> 
-
-<div id="container"> 
-{% block login %}
-    {% if user.is_authenticated %}
-        {% openid_icon openid user %}<b>{{ user }}</b> | <a href="{% url acct_email %}">{% trans "Account" %}</a> | {% if user.is_staff %}<a href="/admin/">{% trans "Admin" %}</a> | {% endif %}<a href="/openid/logout/?next={% url acct_logout %}">{% trans "Logout" %}</a>
-    {% else %}
-        <a href="{% url acct_login %}">{% trans "Login" %}</a> {% ifsetting ACCOUNT_OPEN_SIGNUP %}{% trans "or" %} <a href="{% url acct_signup %}"><b>{% trans "Sign up" %}</b></a>{% endifsetting %}
-    {% endif %}
-{% endblock %}
-
-{% block headers %}
-<div id="header"> 
-  <a href="{% url home %}">
-    <img src="{{ STATIC_URL }}images/openamd_black.png" style="float:left;"/>
-  </a>
-    <img src="{{ STATIC_URL }}images/tnh_temp_logo2.png" style="float:right;" /> 
-</div> 
-{% endblock %}
-
-{% block navigation %}
-<div id="navigation"> 
-	<ul> 
-			<li><a href="/">Home</a></li> 
-			<li><a href="/profile">Profile</a></li> 
-			<li><a href="/friends">Friends</a></li> 
-			<li><a href="/applications">Applications</a></li> 
-			<li><a href="/notifications">Notifications</a></li> 
-            		<li><a href="/settings">Settings</a></li> 
-	</ul> 
-</div> 
-{% endblock %}
-
-<div id="content-container"> 
 {% block content %}
 
 <div id="content"> 
-			<h2> 
-				My Profile
-			</h2> 
-			<p> 
-				<img src="" style="width:150px; height:150px; background-color:#900; float:left; margin:7px;" /> 
-			</p> 
-            <h2>{{ handle }}</h2> 
-			<p> 
-				<b>Age: {{ age }}</b><br /> 
-                <b>Gender: </b>{{ gender }}<br /> 
-                <b>Hometown: </b>{{ hometown }}<br /> 
-			</p> 
-<div style="width:550px; height:220px;"> 
-<div style="width:250; float:left;"> 
-				<b>Interests:</b><br /> 
-               <br /> 
-                New Tech <br /> 
- Activism <br /> 
- Radio <br /> 
- Lockpicking<br /> 
- Crypto<br /> 
- Privacy <br /> 
-Ethics <br /> 
-Telephones <br /> 
-Social Engineering <br /> 
-			</div> 
-<div style="width:250px; float:right;"> 
-My Talks:<br /> 
-talk 1 (time: 13:00) <br /> 
-talk 2 (time: 14:00) <br /> 
-talk 3 (time: 15:00) <br /> 
-talk 4 (time: 16:00) <br /> 
-talk 5 (time: 17:00) <br /> 
-talk 6 (time: 13:00) <br /> 
-talk 7 (time: 13:00) <br /> 
-talk 8 (time: 13:00) <br /> 
- 
-</div></div> 
-		</div> 
+  <h2>My Profile</h2> 
+  <p> 
+    <img src="" style="width:150px; height:150px; background-color:#900; float:left; margin:7px;" /> 
+  </p> 
+  <h2>{{ handle }}</h2> 
+  <p> 
+    <b>Age: {{ age }}</b><br /> 
+    <b>Gender: </b>{{ gender }}<br /> 
+    <b>Hometown: </b>{{ hometown }}<br /> 
+  </p> 
+  <div style="width:550px; height:220px;"> 
+    <div style="width:250; float:left;"> 
+      <b>Interests:</b><br /> 
+      <br /> 
+      New Tech <br /> 
+      Activism <br /> 
+      Radio <br /> 
+      Lockpicking<br /> 
+      Crypto<br /> 
+      Privacy <br /> 
+      Ethics <br /> 
+      Telephones <br /> 
+      Social Engineering <br /> 
+    </div> 
+    <div style="width:250px; float:right;"> 
+      My Talks:<br /> 
+      talk 1 (time: 13:00) <br /> 
+      talk 2 (time: 14:00) <br /> 
+      talk 3 (time: 15:00) <br /> 
+      talk 4 (time: 16:00) <br /> 
+      talk 5 (time: 17:00) <br /> 
+      talk 6 (time: 13:00) <br /> 
+      talk 7 (time: 13:00) <br /> 
+      talk 8 (time: 13:00) <br /> 
+    </div>
+  </div> 
+</div> 
  
 {% endblock %}
 
 {% block aside %}
-
-<div id="aside"> 
-        <h3>Notifications</h3> 
-        <div class="notifications"> 
-		<ul class="notifi_sub"><li><a href="">Friend1</a> is online!</li> 
-<li><a href="">Friend4</a> is now in <a href="">Talk76</a> </li> 
-<li>A new person has just registered! <a href="">View -></a></li> 
-</ul> 
-<a href="notifications.html">View your feed...</a> 
-</div> 
-			<h3> 
-				Applications
-			</h3> 
- 
-				<div class="appmenu"><a href="">People Near You (Neighbor finder)</a></div> 
-<div class="appmenu"><a href="">Recommender</a></div> 
-<div class="appmenu"><a href="">Talks Bookmarker</a></div> 
-<div class="appmenu"><a href="">Twitter your location</a></div> 
-<div class="appmenu"><a href="">Realtime Map</a></div> 
- 
-		</div> 
-
+  {{ block.super }}
 {% endblock %}
-
-{% block footer %}
-<div id="footer">
-    {% trans "&copy; 2010 &lt;OpenAMD&gt;" %}
-    - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
-    - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>
-</div>
-{% endblock %}
-
-</div>
-
-</body>
-</html>
