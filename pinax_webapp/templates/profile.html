@@ -28,46 +28,86 @@
 
 {% block navigation %}
 <div id="navigation"> 
-  <ul> 
-    <li><a href="#">Home</a></li> 
-    <li><a href="#">Friends</a></li> 
-    <li><a href="#">Profile</a></li> 
-    <li><a href="#">Games</a></li> 
-    <li><a href="#">Notifications</a></li> 
-    <li><a href="#">Settings</a></li> 
-  </ul> 
+	<ul> 
+			<li><a href="/">Home</a></li> 
+			<li><a href="/profile">Profile</a></li> 
+			<li><a href="/friends">Friends</a></li> 
+			<li><a href="/applications">Applications</a></li> 
+			<li><a href="/notifications">Notifications</a></li> 
+            		<li><a href="/settings">Settings</a></li> 
+	</ul> 
 </div> 
 {% endblock %}
 
 <div id="content-container"> 
 {% block content %}
-  <div id="content"> 
-    <h2> 
-      Page heading - content area. stuff goes here. application content, page content, settings, etc
-    </h2> 
-    <p> 
-    User profile data goes here.
-	</p> 
-  </div> 
+
+<div id="content"> 
+			<h2> 
+				My Profile
+			</h2> 
+			<p> 
+				<img src="" style="width:150px; height:150px; background-color:#900; float:left; margin:7px;" /> 
+			</p> 
+            <h2>{{ handle }}</h2> 
+			<p> 
+				<b>Age: {{ age }}</b><br /> 
+                <b>Gender: </b>{{ gender }}<br /> 
+                <b>Hometown: </b>{{ hometown }}<br /> 
+			</p> 
+<div style="width:550px; height:220px;"> 
+<div style="width:250; float:left;"> 
+				<b>Interests:</b><br /> 
+               <br /> 
+                New Tech <br /> 
+ Activism <br /> 
+ Radio <br /> 
+ Lockpicking<br /> 
+ Crypto<br /> 
+ Privacy <br /> 
+Ethics <br /> 
+Telephones <br /> 
+Social Engineering <br /> 
+			</div> 
+<div style="width:250px; float:right;"> 
+My Talks:<br /> 
+talk 1 (time: 13:00) <br /> 
+talk 2 (time: 14:00) <br /> 
+talk 3 (time: 15:00) <br /> 
+talk 4 (time: 16:00) <br /> 
+talk 5 (time: 17:00) <br /> 
+talk 6 (time: 13:00) <br /> 
+talk 7 (time: 13:00) <br /> 
+talk 8 (time: 13:00) <br /> 
+ 
+</div></div> 
+		</div> 
+ 
 {% endblock %}
 
 {% block aside %}
-    {% if user.is_authenticated %}
-        <ul class="tabs">{% spaceless %}
-            <li id="tab_profile"><a href="{% url profile_detail user %}">{% trans "Profile" %}</a></li>
-            <li id="tab_notices"><a href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} ({{ notice_unseen_count }}){% endif %}</a></li>
-        {% endspaceless %}</ul>
-    {% endif %}
-    <div id="aside"> 
-      <h3>Applications</h3> 
-      
-      <div class="appmenu"><a href="">People Near You (Neighbor finder)</a></div> 
-      <div class="appmenu"><a href="">Recommender</a></div> 
-      <div class="appmenu"><a href="">Talks Bookmarker</a></div> 
-      <div class="appmenu"><a href="">Twitter your location</a></div> 
-      <div class="appmenu"><a href="">Realtime Map</a></div> 
+
+<div id="aside"> 
+        <h3>Notifications</h3> 
+        <div class="notifications"> 
+		<ul class="notifi_sub"><li><a href="">Friend1</a> is online!</li> 
+<li><a href="">Friend4</a> is now in <a href="">Talk76</a> </li> 
+<li>A new person has just registered! <a href="">View -></a></li> 
+</ul> 
+<a href="notifications.html">View your feed...</a> 
+</div> 
+			<h3> 
+				Applications
+			</h3> 
  
-    </div>
+				<div class="appmenu"><a href="">People Near You (Neighbor finder)</a></div> 
+<div class="appmenu"><a href="">Recommender</a></div> 
+<div class="appmenu"><a href="">Talks Bookmarker</a></div> 
+<div class="appmenu"><a href="">Twitter your location</a></div> 
+<div class="appmenu"><a href="">Realtime Map</a></div> 
+ 
+		</div> 
+
 {% endblock %}
 
 {% block footer %}
