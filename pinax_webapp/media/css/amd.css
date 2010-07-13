@@ -6,7 +6,7 @@ body {
 	color: #CCC;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size: 10pt;
-	background-image:url(../images/wavebg5.png);
+	background-image:url(/site_media/static/images/wavebg5.png);
 		background-position:right top;
 		background-repeat:no-repeat;
 }
@@ -36,7 +36,7 @@ a:hover, a:active {
 
 .topmenu {
 	background-color:#000;
-	background-image: url(images/tnh_temp_logo.png);
+	background-image: url(/site_media/static/images/tnh_temp_logo.png);
 	background-repeat: no-repeat;
 	background-position: right center;
 	width:540px;
@@ -59,12 +59,40 @@ a:hover, a:active {
 	
 }
 
+.notifications {
+	background-color:#333;
+	min-height: 20px;
+	height: auto;
+	width:250px;
+	border:thin solid #666;
+	padding:2px;
+	margin:2px;
+	text-align:right;
+	
+}
+
+.notificationsfeed {
+	font-size:11pt;
+	line-height: 20px;
+	}
+	
+.notifi_sub {
+	text-align:left;
+	
+	}
+
 .footer {
 	font-size:10px;
 	color:#666666;
 	text-align:center;
 	
 }
+
+h3 {
+	padding:3px; 
+
+	
+	}
 
 @charset "UTF-8";
 /* CSS Document */
