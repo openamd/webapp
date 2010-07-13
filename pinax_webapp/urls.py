@@ -31,7 +31,6 @@ if settings.ACCOUNT_OPEN_SIGNUP:
 else:
     signup_view = "signup_codes.views.signup"
 
-
 urlpatterns = patterns('',
     url(r'^$', homepage, name="home"),
     url(r'^success/$', direct_to_template, {"template": "waitinglist/success.html"}, name="waitinglist_sucess"),
@@ -43,7 +42,7 @@ urlpatterns = patterns('',
     (r'^about/', include('about.urls')),
     (r'^account/', include('account.urls')),
     (r'^openid/(.*)', PinaxConsumer()),
-    (r'^profiles/', direct_to_template, {"template": "profile.html"}),
+    (r'^profile/', direct_to_template, {"template": "profile.html"}),
     (r'^notices/', include('notification.urls')),
     (r'^announcements/', include('announcements.urls')),
     
