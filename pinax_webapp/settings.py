@@ -183,6 +183,7 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"^/account/signup/$",
     r"^/success/$",
     r"^/register/$",
+    r"^/profiles/$",
     r"^/account/password_reset",
     r"^/account/confirm_email",
     r"/openid"
