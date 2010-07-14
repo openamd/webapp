@@ -43,11 +43,8 @@ urlpatterns = patterns('',
     (r'^account/', include('account.urls')),
     (r'^openid/(.*)', PinaxConsumer()),
 
-    (r'^profile/', direct_to_template, {"template": "profile.html"}),
-
     (r'^profiles/', include('profiles.urls')),
 
-    (r'^notices/', include('notification.urls')),
     (r'^notices/', include('notification.urls')),
     (r'^messages/', include('messages.urls')),
     
