@@ -1,0 +1,29 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Incorrect Code , Don't hack the planet" %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans "Incorrect Code" %}</h1>
+    
+    {% if code %}
+    <p>{% blocktrans %}The code <b>{{ code }}</b> is incorrect.{% endblocktrans %}</p>
+    {% else %}
+    <p>{% blocktrans %}You must specify a code and badge.{% endblocktrans %}</p>
+    {% endif %}
+    
+    {% if badge_auth %}
+    <p>{% blocktrans %}The badge <b>{{ badge }}</b> is incorrect.{% endblocktrans %}</p>
+    {% endif %}
+    
+    <p>{% trans "try again:" %}</p>
+    
+    <form action="">
+        code: <input type="text" name="code" label="code"/>
+        badge: <input type="text" name="badge" label="badge"/>
+        <input type="submit" value="Submit" />
+    </form>
+    
+    
+{% endblock %}
