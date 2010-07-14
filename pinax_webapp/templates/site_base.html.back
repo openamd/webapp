@@ -41,9 +41,6 @@
 {% endblock %}
 
 <div id="content-container"> 
-{% block body %}
-
-{% endblock %}
 {% block content %}
   <div id="content"> 
     <h2> 

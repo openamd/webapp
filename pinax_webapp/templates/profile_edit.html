@@ -1,0 +1,66 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load openid_tags %}
+{% load ifsetting_tag %}
+ 
+{% block content %}
+
+<div id="content"> 
+  <h2>Profile Settings</h2> 
+ 
+  <p> 
+    <form action="" method="post">
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+    <form action="/profile_update" method="POST">
+    <B>Your Handle:</B> <input type="text" size="50" value="{{ handle }}" maxlength="25" name="handle" /> 
+    <Br /><Br /> 
+    <b>Choose Userpic:</b> <input type="file" /><br /><Br /> 
+    <b>Gender:</b> <input type="radio" name="gender" value="male" /> Male <input type="radio" name="gender" value="female" /> Female <input type="radio" name="gender" value="other" /> Other<br /><br /> 
+    <b>Age:</b> <input type="text" size="10" maxlength="2" name="age" value="{{ age }}"/><br /><Br /> 
+    <B>Home Location: </B><input type="text" size="50" name="homeloc" value="{{ homeloc }}"/><br /><Br /> 
+    <b>Interests:</b><Br /> 
+    <div style="width:425px; height:220px;"> 
+      <div style="width:210; float:left;"> 
+ 
+	<input type="checkbox" name="i1"  /> New Tech <br /> 
+	<input type="checkbox" name="i2"  /> Activism <br /> 
+	<input type="checkbox" name="i3"  /> Radio <br /> 
+	<input type="checkbox" name="i4"  /> Lockpicking<br /> 
+	<input type="checkbox" name="i5"  /> Crypto<br /> 
+	<input type="checkbox" name="i6"  /> Privacy <br /> 
+	<input type="checkbox" name="i7"  /> Ethics <br /> 
+	<input type="checkbox" name="i8"  /> Telephones <br /> 
+	<input type="checkbox" name="i9"  /> Social Engineering <br /> 
+	<input type="checkbox" name="i10"  /> Hackerspaces <br /> 
+	<input type="checkbox" name="i11"  /> Hardware Hacking<br /> 
+      </div> 
+      <div style="width:210px; float:right;"> 
+	<input type="checkbox" name="i12"  /> Nostalgia <br /> 
+	<input type="checkbox" name="i13"  /> Communities <br /> 
+	<input type="checkbox" name="i14"  /> Science <br /> 
+	<input type="checkbox" name="i15"  /> Government <br /> 
+	<input type="checkbox" name="i16"  /> Network Security<br /> 
+	<input type="checkbox" name="i17"  /> Malicious Software <br /> 
+	<input type="checkbox" name="i18"  /> Pen Testing<br /> 
+	<input type="checkbox" name="i19"  /> Web <br /> 
+	<input type="checkbox" name="i20"  /> Niche Hacks<br /> 
+	<input type="checkbox" name="i21"  /> Media <br /> 
+      </div>
+    </div>
+    <Br /><br /> 
+    <input type="submit" value="Save Profile" /> 
+    </form>
+  </p> 
+  
+</div> 
+ 
+{% endblock %}
+
+{% block aside %}
+  {{ block.super %}
+{% endblock %}

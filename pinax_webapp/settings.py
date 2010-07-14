@@ -141,6 +141,7 @@ INSTALLED_APPS = (
     'socialregistration',
     
     # external
+    'avatar',
     'notification', # must be first
     'django_openid',
     'emailconfirmation',
@@ -151,14 +152,58 @@ INSTALLED_APPS = (
     'ajax_validation',
     'uni_form',
     'staticfiles',
+    'django_extensions',
+
+   # external
+    'notification', # must be first
+    'django_openid',
+    'emailconfirmation',
+    'django_extensions',
+    'robots',
+    'friends',
+    'mailer',
+    'messages',
+    'announcements',
+    'oembed',
+    'djangodblog',
+    'pagination',
+#    'gravatar',
+    'threadedcomments',
+    'threadedcomments_extras',
+    'timezones',
+    'voting',
+    'voting_extras',
+    'tagging',
+    'blog',
+    'ajax_validation',
+    'photologue',
+    'avatar',
+    'flag',
+    'locations',
+    'uni_form',
+    'django_sorting',
+    'django_markup',
+    'staticfiles',
     
     # internal (for now)
-    'basic_profiles',
+
+
+    'analytics',
+    'profiles',
+    'account',
+    'tribes',
+    'photos',
+    'topics',
+    'groups',
+
+
+
     'account',
     'waitinglist',
     'signup_codes',
     
     'about',
+    'profiles',
     
     'django.contrib.admin',
 
@@ -177,7 +222,7 @@ MARKUP_CHOICES = (
 )
 WIKI_MARKUP_CHOICES = MARKUP_CHOICES
 
-AUTH_PROFILE_MODULE = 'basic_profiles.Profile'
+AUTH_PROFILE_MODULE = 'profiles.Profile'
 NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 ACCOUNT_OPEN_SIGNUP = False
@@ -187,7 +232,7 @@ ACCOUNT_EMAIL_VERIFICATION = False
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
 CONTACT_EMAIL = "amd@hope.net"
-SITE_NAME = "Pinax"
+SITE_NAME = "HOPE AMD"
 LOGIN_URL = "/account/login/"
 LOGIN_REDIRECT_URL = "/profile"
 LOGIN_REDIRECT_URLNAME = "what_next"
