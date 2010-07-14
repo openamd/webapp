@@ -4,7 +4,8 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"> 
-<head> 
+<head>
+<title>{% block head_title %}Home{% endblock %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL  }}css/amd.css" /> 
 
@@ -27,7 +28,8 @@
 {% endblock %}
 
 {% block navigation %}
-<div id="navigation"> 
+<div id="navigation">
+  {% if user.is_authenticated %}>
   <ul> 
     <li><a href="/">Home</a></li> 
     <li><a href="#">Friends</a></li> 
@@ -36,7 +38,9 @@
     <li><a href="#">Notifications</a></li> 
     <li><a href="#">Stats</a></li> 
     <li><a href="#">Settings</a></li> 
-  </ul> 
+  </ul>
+  {% else %}<ul></ul>
+  {% endif %} 
 </div> 
 {% endblock %}
 
