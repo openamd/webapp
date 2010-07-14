@@ -191,7 +191,6 @@ INSTALLED_APPS = (
     'analytics',
     'profiles',
     'account',
-    'tribes',
     'photos',
     'topics',
     'groups',
@@ -199,7 +198,6 @@ INSTALLED_APPS = (
 
 
     'account',
-    'waitinglist',
     'signup_codes',
     
     'about',

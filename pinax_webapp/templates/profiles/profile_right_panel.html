@@ -2,17 +2,6 @@
 {% load avatar_tags %}
 
 {% if is_me %}
-    <div class="groups">
-        <h2>{% trans "Your Tribes" %}</h2>
-        {% if other_user.tribes.all %}
-            {% for tribe in other_user.tribes.all %}
-                <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a>
-            {% endfor %}
-        {% else %}
-            {% url tribe_list as tribe_url %}
-            <p>{% blocktrans %}You are not yet a member of any <a href="{{ tribe_url }}">tribes</a>.{% endblocktrans %}</p>
-        {% endif %}
-    </div>
     <div class="friends">
         <h2>{% trans "Your Friends" %}</h2>
         {% if other_friends %}
@@ -34,16 +23,6 @@
 {% endif %}
 
 {% if is_friend %}
-    <div class="groups">
-        <h2>{% blocktrans %}{{ other_user }}'s Tribes{% endblocktrans %}</h2>
-        {% if other_user.tribes.all %}
-            {% for tribe in other_user.tribes.all %}
-                <a href="{% url tribe_detail tribe.slug %}">{{ tribe.name }}</a>
-            {% endfor %}
-        {% else %}
-            <p>{% blocktrans %}Not yet a member of any tribes.{% endblocktrans %}</p>
-        {% endif %}
-    </div>
     <div class="friends">
         <h2>{% blocktrans %}{{ other_user }}'s Friends{% endblocktrans %}</h2>
         <table width="100%">
