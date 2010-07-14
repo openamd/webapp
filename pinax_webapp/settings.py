@@ -33,6 +33,12 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 FACEBOOK_API_KEY = "44725091b7c721acb912a41e9cd061f8"
 FACEBOOK_SECRET_KEY = "4bac850fe9fc499d30b5ed84a4c72304"
 
+TWITTER_CONSUMER_KEY = "MHTzvdzYXDCwl9L02ZFY3g"
+TWITTER_CONSUMER_SECRET_KEY = "t01yJANMcGGKvOCSR82Mupf5KqendF2Dq7pZEZGg1KA"
+TWITTER_REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
+TWITTER_ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
+TWITTER_AUTHORIZATION_URL = "https://api.twitter.com/oauth/authorize"
+
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
 # although not all variations may be possible on all operating systems.
@@ -183,6 +189,7 @@ EMAIL_DEBUG = DEBUG
 CONTACT_EMAIL = "amd@hope.net"
 SITE_NAME = "Pinax"
 LOGIN_URL = "/account/login/"
+LOGIN_REDIRECT_URL = "/profile"
 LOGIN_REDIRECT_URLNAME = "what_next"
 
 AUTHENTICATED_EXEMPT_URLS = [
@@ -195,6 +202,7 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"^/account/confirm_email",
 
     r"/facebook",
+    r"/twitter",
     r"/setup",
     r"/xd_receiver.htm",
 ]
@@ -202,6 +210,7 @@ AUTHENTICATED_EXEMPT_URLS = [
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'socialregistration.auth.FacebookAuth',
+    'socialregistration.auth.TwitterAuth',
 )
 
 # local_settings.py can be used to override environment-specific settings
