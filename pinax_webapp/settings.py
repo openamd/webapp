@@ -35,9 +35,9 @@ FACEBOOK_SECRET_KEY = "4bac850fe9fc499d30b5ed84a4c72304"
 
 TWITTER_CONSUMER_KEY = "MHTzvdzYXDCwl9L02ZFY3g"
 TWITTER_CONSUMER_SECRET_KEY = "t01yJANMcGGKvOCSR82Mupf5KqendF2Dq7pZEZGg1KA"
-TWITTER_REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
-TWITTER_ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
-TWITTER_AUTHORIZATION_URL = "https://api.twitter.com/oauth/authorize"
+TWITTER_REQUEST_TOKEN_URL = "http://twitter.com/oauth/request_token"
+TWITTER_ACCESS_TOKEN_URL = "http://twitter.com/oauth/access_token"
+TWITTER_AUTHORIZATION_URL = "http://twitter.com/oauth/authorize"
 
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
@@ -201,8 +201,7 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"^/account/password_reset",
     r"^/account/confirm_email",
 
-    r"/facebook",
-    r"/twitter",
+    r"",
     r"/setup",
     r"/xd_receiver.htm",
 ]
