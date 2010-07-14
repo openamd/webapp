@@ -29,7 +29,7 @@
 
 {% block navigation %}
 <div id="navigation">
-  {% if user.is_authenticated %}>
+  {% if user.is_authenticated %}
   <ul> 
     <li><a href="/">Home</a></li> 
     <li><a href="#">Friends</a></li> 
@@ -39,7 +39,7 @@
     <li><a href="#">Stats</a></li> 
     <li><a href="#">Settings</a></li> 
   </ul>
-  {% else %}<ul></ul>
+  {% else %}<ul><li><a href="/">Home</a></li></ul>
   {% endif %} 
 </div> 
 {% endblock %}
