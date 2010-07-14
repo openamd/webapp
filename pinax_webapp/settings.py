@@ -30,6 +30,9 @@ DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
+FACEBOOK_API_KEY = "44725091b7c721acb912a41e9cd061f8"
+FACEBOOK_SECRET_KEY = "4bac850fe9fc499d30b5ed84a4c72304"
+
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
 # although not all variations may be possible on all operating systems.
@@ -87,6 +90,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'socialregistration.middleware.FacebookMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django_openid.consumer.SessionConsumer',
     'account.middleware.LocaleMiddleware',
@@ -126,7 +130,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.webdesign',
+
     'pinax.templatetags',
+    'socialregistration',
     
     # external
     'notification', # must be first
@@ -174,21 +180,29 @@ ACCOUNT_EMAIL_VERIFICATION = False
 
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
-CONTACT_EMAIL = "feedback@example.com"
+CONTACT_EMAIL = "amd@hope.net"
 SITE_NAME = "Pinax"
 LOGIN_URL = "/account/login/"
 LOGIN_REDIRECT_URLNAME = "what_next"
 
 AUTHENTICATED_EXEMPT_URLS = [
     r"^/$",
+    r"^/admin$",
     r"^/account/signup/$",
     r"^/success/$",
     r"^/register/$",
-    r"^/profile/$",
     r"^/account/password_reset",
     r"^/account/confirm_email",
-    r"/openid"
+
+    r"/facebook",
+    r"/setup",
+    r"/xd_receiver.htm",
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'socialregistration.auth.FacebookAuth',
+)
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.

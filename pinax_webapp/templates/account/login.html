@@ -1,0 +1,20 @@
+{% extends "site_base.html" %}
+
+{% block content %}
+<div id="content"> 
+    <h2>Log in</h2> 
+    <p> 
+
+    </p> 
+{% if user.is_authenticated %}
+   Hey you logged in!
+{% else %}
+   No logins! Boo!
+
+   
+    {% load facebook_tags %}
+    {% facebook_button %}
+    {% facebook_js %}
+{% endif %}
+</div>
+{% endblock %}
