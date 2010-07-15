@@ -18,6 +18,7 @@ from profiles.forms import ProfileForm
 
 from avatar.templatetags.avatar_tags import avatar
 
+import mining.cass
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -60,7 +61,7 @@ def profile(request, username, template_name="profiles/profile.html", extra_cont
     if request.user.is_authenticated():
         is_friend = Friendship.objects.are_friends(request.user, other_user)
         other_friends = Friendship.objects.friends_for_user(other_user)
-        if request.user == other_user:
+        if request.user == other_user
             is_me = True
         else:
             is_me = False
