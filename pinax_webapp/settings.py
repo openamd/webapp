@@ -188,6 +188,8 @@ INSTALLED_APPS = (
 
     'account',
     'signup_codes',
+    'mining',
+    'visual_locations',
     
     'about',
     'profiles',
