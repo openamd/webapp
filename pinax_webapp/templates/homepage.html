@@ -8,7 +8,8 @@
 
 {% block body %}
     <h1>{% trans "Welcome to OpenAMD" %}</h1>
-    
+    {% if user.is_authenticated %}
+    {% else %}
     <p>
         {% blocktrans %}
 	<b> <a href="http://amd.hope.net/">OpenAMD</a></b> is a social
@@ -29,7 +30,6 @@
         badge: <input type="text" name="badge" label="badge"/>
         <input type="submit" value="Sign up" />
     </form>
- {% block aside %}
-{% endblock %}
+    {% endif %}
     
 {% endblock %}

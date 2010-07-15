@@ -1,0 +1,12 @@
+{% extends "site_base.html" %}
+
+{% block body %}
+<div id="content">
+<form action="" method="post">
+	<input type="checkbox" name="api_access" {% if api_access %}CHECKED{% endif %} />Allow my information into the Public API<br /> 
+	<input type="checkbox" name="data_access" {% if data_access %}CHECKED{% endif %} />Allow my information into the dataset<br /> 
+	<p>
+	<input type="submit" value="Submit" />
+</form>
+</div>
+{% endblock %}

@@ -26,6 +26,9 @@ class Account(models.Model):
     def __unicode__(self):
         return self.user.username
 
+def get_badge_id(user):
+    return Account.objects.get(user=user).badge
+
 
 class OtherServiceInfo(models.Model):
     

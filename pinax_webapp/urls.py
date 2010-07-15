@@ -39,16 +39,15 @@ urlpatterns = patterns('',
 
     url(r'^admin/invite_user/$', 'signup_codes.views.admin_invite_user', name="admin_invite_user"),
     url(r'^account/signup/$', signup_view, name="acct_signup"),
+
+    url(r'^settings/', 'privacy.views.settings'),
     
     (r'^about/', include('about.urls')),
     (r'^account/', include('account.urls')),
     (r'^openid/(.*)', PinaxConsumer()),
 
-    (r'^profile/', direct_to_template, {"template": "profile.html"}),
-
     (r'^profiles/', include('profiles.urls')),
 
-    (r'^notices/', include('notification.urls')),
     (r'^notices/', include('notification.urls')),
     (r'^messages/', include('messages.urls')),
     

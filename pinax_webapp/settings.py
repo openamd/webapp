@@ -182,7 +182,7 @@ INSTALLED_APPS = (
     'account',
     'photos',
     'topics',
-    'groups',
+    'privacy',
 
 
 

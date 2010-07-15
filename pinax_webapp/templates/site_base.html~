@@ -33,10 +33,11 @@
 {% if user.is_authenticated %}
   <ul> 
     <li><a href="/">Home</a></li> 
+    <li><a href="/messages">Inbox</a></li>
     <li><a href="/profiles/friends/{{ user.username }}">Friends</a></li> 
     <li><a href="/profiles/profile/{{ user.username }}">Profile</a></li> 
     <li><a href="#">Games</a></li> 
-    <li><a href="#">Notifications</a></li> 
+    <li><a href="/notices">Notifications</a></li> 
     <li><a href="#">Stats</a></li> 
     <li><a href="#">Settings</a></li> 
   </ul>
@@ -56,29 +57,7 @@
   </div> 
 {% endblock %}
 
-{% block aside %}
-
-    <div id="aside"> 
-        <h3>Notifications</h3> 
-        <div class="notifications"> 
-		<ul class="notifi_sub">
-		  <li><a href="">Friend1</a> is online!</li> 
-		  <li><a href="">Friend4</a> is now in <a href="">Talk76</a> </li> 
-		  <li>A new person has just registered! <a href="">View -></a></li> 
-		</ul> 
-		<a href="notifications.html">View your feed...</a> 
-	</div> 
-
-	<h3>Applications</h3> 
- 
-	<div class="appmenu"><a href="">People Near You (Neighbor finder)</a></div> 
-	<div class="appmenu"><a href="">Recommender</a></div> 
-	<div class="appmenu"><a href="">Talks Bookmarker</a></div> 
-	<div class="appmenu"><a href="">Twitter your location</a></div> 
-	<div class="appmenu"><a href="">Realtime Map</a></div> 
- 
-    </div> 
-
+{% block sidebar %}
 {% endblock %}
 
 {% block footer %}
