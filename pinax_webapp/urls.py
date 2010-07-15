@@ -11,8 +11,6 @@ admin.autodiscover()
 from account.openid_consumer import PinaxConsumer
 from waitinglist.forms import WaitingListEntryForm
 
-import socialregistration.urls
-
 # @@@ turn into template tag
 def homepage(request):
     if request.method == "POST":
@@ -57,8 +55,6 @@ urlpatterns = patterns('',
     
     (r'^admin/(.*)', admin.site.root),
 )
-
-urlpatterns += socialregistration.urls.urlpatterns
 
 if settings.SERVE_MEDIA:
     urlpatterns += patterns('',

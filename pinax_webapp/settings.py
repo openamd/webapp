@@ -30,15 +30,6 @@ DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
-FACEBOOK_API_KEY = "44725091b7c721acb912a41e9cd061f8"
-FACEBOOK_SECRET_KEY = "4bac850fe9fc499d30b5ed84a4c72304"
-
-TWITTER_CONSUMER_KEY = "MHTzvdzYXDCwl9L02ZFY3g"
-TWITTER_CONSUMER_SECRET_KEY = "t01yJANMcGGKvOCSR82Mupf5KqendF2Dq7pZEZGg1KA"
-TWITTER_REQUEST_TOKEN_URL = "http://twitter.com/oauth/request_token"
-TWITTER_ACCESS_TOKEN_URL = "http://twitter.com/oauth/access_token"
-TWITTER_AUTHORIZATION_URL = "http://twitter.com/oauth/authorize"
-
 # Local time zone for this installation. Choices can be found here:
 # http://www.postgresql.org/docs/8.1/static/datetime-keywords.html#DATETIME-TIMEZONE-SET-TABLE
 # although not all variations may be possible on all operating systems.
@@ -96,7 +87,6 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'socialregistration.middleware.FacebookMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django_openid.consumer.SessionConsumer',
     'account.middleware.LocaleMiddleware',
@@ -119,13 +109,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
-    
+
     "pinax.core.context_processors.pinax_settings",
     
     "notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
     "account.context_processors.openid",
     "account.context_processors.account",
+    "socialauth.context_processors.facebook_api_key",
 )
 
 INSTALLED_APPS = (
@@ -138,7 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.webdesign',
 
     'pinax.templatetags',
-    'socialregistration',
+    'socialauth',
     
     # external
     'avatar',
@@ -231,8 +222,8 @@ EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
 CONTACT_EMAIL = "amd@hope.net"
 SITE_NAME = "HOPE AMD"
-LOGIN_URL = "/account/login/"
-LOGIN_REDIRECT_URL = "/profile"
+LOGIN_URL = "/account/login" # "/accounts/login/"
+LOGIN_REDIRECT_URL = "/profiles"
 LOGIN_REDIRECT_URLNAME = "what_next"
 
 AUTHENTICATED_EXEMPT_URLS = [
@@ -245,15 +236,8 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"^/account/confirm_email",
 
     r"",
-    r"/setup",
     r"/xd_receiver.htm",
 ]
-
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'socialregistration.auth.FacebookAuth',
-    'socialregistration.auth.TwitterAuth',
-)
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
