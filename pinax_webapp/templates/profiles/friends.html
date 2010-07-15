@@ -1,0 +1,23 @@
+{% extends "profiles/base.html" %}
+
+{% load i18n %}
+{% load avatar_tags %}
+{% load uni_form %}
+{% load threadedcommentstags %}
+
+{% block head_title %}{% blocktrans %}Profile for {{ other_user }}{% endblocktrans %}{% endblock %}
+
+{% block body %}
+    
+    <div class="left_panel">
+		<div class="vcard">
+
+		 {% include "profiles/profile_right_panel.html" %} 
+    
+		</div>
+    </div>
+{% endblock %}
+
+{% block extra_body %}
+    <script src="{{ STATIC_URL }}pinax/js/avatar.js" type="text/javascript"></script>
+{% endblock %}
