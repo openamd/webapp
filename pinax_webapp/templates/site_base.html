@@ -33,8 +33,8 @@
 {% if user.is_authenticated %}
   <ul> 
     <li><a href="/">Home</a></li> 
-    <li><a href="#">Friends</a></li> 
-    <li><a href="#">Profile</a></li> 
+    <li><a href="/profiles/friends/{{ user.username }}">Friends</a></li> 
+    <li><a href="/profiles/profile/{{ user.username }}">Profile</a></li> 
     <li><a href="#">Games</a></li> 
     <li><a href="#">Notifications</a></li> 
     <li><a href="#">Stats</a></li> 

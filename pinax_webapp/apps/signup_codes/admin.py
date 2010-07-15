@@ -2,6 +2,7 @@
 from django.contrib import admin
 
 from signup_codes.models import SignupCode
+from signup_codes.models import SignupCodeResult
 
 
 class SignupCodeAdmin(admin.ModelAdmin):
@@ -9,3 +10,4 @@ class SignupCodeAdmin(admin.ModelAdmin):
     list_filter = ("created",)
 
 admin.site.register(SignupCode, SignupCodeAdmin)
+admin.site.register(SignupCodeResult)

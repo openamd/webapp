@@ -12,6 +12,8 @@ from account.utils import get_default_redirect
 from signup_codes.models import check_signup_code
 from signup_codes.forms import SignupForm, InviteUserForm
 
+from account.models import Account
+from django.contrib.auth.models import User
 
 def signup(request, form_class=SignupForm,
         template_name="account/signup.html", success_url=None):
@@ -28,15 +30,21 @@ def signup(request, form_class=SignupForm,
             user = authenticate(username=username, password=password)
             
             signup_code = form.cleaned_data["signup_code"]
-            signup_badge= form.cleaned_data["signup_code"]
+            badge_code = form.data.get("signup_badge")
             signup_code.use(user)
-            signup_badge.use(user)
             
             auth_login(request, user)
             request.user.message_set.create(
                 message=ugettext("Successfully logged in as %(username)s.") % {
                 'username': user.username
             })
+            
+            post_acc = Account.objects.get(user=User.objects.get(username=user.username))
+            print post_acc
+            post_acc.badge = badge_code
+            post_acc.save()
+ 
+
             return HttpResponseRedirect(success_url)
     else:
         signup_code = check_signup_code(code,badge)

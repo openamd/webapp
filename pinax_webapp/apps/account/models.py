@@ -19,6 +19,9 @@ class Account(models.Model):
     
     timezone = TimeZoneField(_('timezone'))
     language = models.CharField(_('language'), max_length=10, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
+    badge = models.CharField(max_length=50)
+    #get badge like this
+    #a = Account.objects.get(user=User.objects.get(username="josh")).badge
     
     def __unicode__(self):
         return self.user.username

@@ -116,7 +116,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "announcements.context_processors.site_wide_announcements",
     "account.context_processors.openid",
     "account.context_processors.account",
-    "socialauth.context_processors.facebook_api_key",
 )
 
 INSTALLED_APPS = (
@@ -129,7 +128,6 @@ INSTALLED_APPS = (
     'django.contrib.webdesign',
 
     'pinax.templatetags',
-    'socialauth',
     
     # external
     'avatar',
@@ -230,12 +228,12 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"^/$",
     r"^/admin$",
     r"^/account/signup/$",
+    r"^/account/login",
     r"^/success/$",
     r"^/register/$",
     r"^/account/password_reset",
     r"^/account/confirm_email",
 
-    r"",
     r"/xd_receiver.htm",
 ]
 
