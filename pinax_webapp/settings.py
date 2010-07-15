@@ -183,13 +183,12 @@ INSTALLED_APPS = (
     'photos',
     'topics',
     'privacy',
-
+    'mining',
+    'visual_locations',
 
 
     'account',
     'signup_codes',
-    'mining',
-    'visual_locations',
     
     'about',
     'profiles',

@@ -17,14 +17,13 @@ from profiles.models import Profile
 from profiles.forms import ProfileForm
 
 from avatar.templatetags.avatar_tags import avatar
-
 import mining.cass
+import time
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
 else:
     notification = None
-
 
 def profiles(request, template_name="profiles/profiles.html", extra_context=None):
     if extra_context is None:
@@ -57,11 +56,12 @@ def profile(request, username, template_name="profiles/profile.html", extra_cont
         extra_context = {}
     
     other_user = get_object_or_404(User, username=username)
-    
+    mining.cass.update_user_field(request.user.username,"stalk_"+str(time.time()),username)
+
     if request.user.is_authenticated():
         is_friend = Friendship.objects.are_friends(request.user, other_user)
         other_friends = Friendship.objects.friends_for_user(other_user)
-        if request.user == other_user
+        if request.user == other_user:
             is_me = True
         else:
             is_me = False

@@ -27,7 +27,7 @@ class Account(models.Model):
         return self.user.username
 
 def get_badge_id(user):
-    return Account.objects.get(user=user).badge
+    return Account.objects.get(user=User.objects.get(username=user)).badge
 
 
 class OtherServiceInfo(models.Model):
