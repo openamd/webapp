@@ -31,6 +31,9 @@ else:
 
 urlpatterns = patterns('',
     url(r'^$', homepage, name="home"),
+    
+    (r'^auth/', include('djangofoursquare.urls')),
+
     url(r'^success/$', direct_to_template, {"template": "waitinglist/success.html"}, name="waitinglist_sucess"),
     url(r'^register/$', direct_to_template, {"template": "register.html"}),
 

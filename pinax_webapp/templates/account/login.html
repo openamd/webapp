@@ -59,6 +59,8 @@
         </fieldset>
     </form>
     
+    <a href='{% url foursquare_oauth_auth %}'><img src="{{ STATIC_URL }}images/signinwith-foursquare.png" /></a>
+
     <p>{% blocktrans %}If you have any trouble logging in to your account, contact us at <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>.{% endblocktrans %}</p>
 {% endblock %}
 
