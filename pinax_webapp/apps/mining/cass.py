@@ -31,7 +31,7 @@ def get_user_fields(user,fields):
         return None
 
 def get_field_for_users(users,field):
-    return get_fields_for_users(users,fields)[get_badge_id(user)]
+    return get_fields_for_users(users,field)[get_badge_id(user)]
 
 def get_fields_for_users(users,fields):
     try:

@@ -41,8 +41,8 @@
     <p>You can use the code provided with your badge to sign-up with the site right now.</p>
     
     <form method="GET" action="{% url acct_signup %}">
-        code :<input type="text" name="code" />
         badge: <input type="text" name="badge" label="badge"/>
+        code :<input type="text" name="code" />
         <input type="submit" value="Sign up" />
     </form>
     {% endif %}
