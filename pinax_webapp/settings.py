@@ -116,6 +116,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "announcements.context_processors.site_wide_announcements",
     "account.context_processors.openid",
     "account.context_processors.account",
+    "socialauth.context_processors.facebook_api_key",
+
 )
 
 INSTALLED_APPS = (
@@ -186,7 +188,6 @@ INSTALLED_APPS = (
     'mining',
     'visual_locations',
 
-
     'account',
     'signup_codes',
     
@@ -228,12 +229,15 @@ LOGIN_REDIRECT_URLNAME = "what_next"
 AUTHENTICATED_EXEMPT_URLS = [
     r"^/$",
     r"^/admin$",
+
     r"^/account/signup/$",
     r"^/account/login",
     r"^/success/$",
     r"^/register/$",
     r"^/account/password_reset",
     r"^/account/confirm_email",
+
+    r"^/auth",
 
     r"/xd_receiver.htm",
 ]

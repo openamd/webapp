@@ -7,28 +7,23 @@
 {% block tab_id %}id="home_tab"{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Welcome to Pinax" %}</h1>
-    
+    <h1>{% trans "Welcome to OpenAMD" %}</h1>
+    {% if user.is_authenticated %}
+
+    {% else %}
     <p>
         {% blocktrans %}
-        <b>Pinax</b> is a <a href="http://djangoproject.com/">Django</a>
-        project intended to provide a starting point for websites. By
-        integrating numerous reusable Django apps to take care of the
-        things that many sites have in common, it lets you focus on what
-        makes your site different.
+	<b> <a href="http://amd.hope.net/">OpenAMD</a></b> is a social
+        experiment in the limits of our privacy. How much are we willing
+        to sacrifice? What can happen when pieces of information about you
+        are tied together? OpenAMD explores these questions in the context
+        of the HOPE conference.
         {% endblocktrans %}
+	
     </p>
-    
-    <p>
-        {% blocktrans %}
-        For more information about Pinax, see
-        <a href="http://pinaxproject.com/">http://pinaxproject.com/</a>.
-        {% endblocktrans %}
-    </p>
-    
     
     <hr />
-    
+
     <p>You can use the code provided with your badge to sign-up with the site right now.</p>
     
     <form method="GET" action="{% url acct_signup %}">
@@ -36,7 +31,6 @@
         badge: <input type="text" name="badge" label="badge"/>
         <input type="submit" value="Sign up" />
     </form>
- {% block aside %}
-{% endblock %}
+    {% endif %}
     
 {% endblock %}

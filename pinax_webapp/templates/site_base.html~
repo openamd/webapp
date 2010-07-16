@@ -7,8 +7,6 @@
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL  }}css/amd.css" /> 
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL  }}js/jquery-1.4.2.min.js" /> 
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL  }}js/jbug.js" /> 
 
 <div id="container"> 
 {% block login %}
@@ -39,7 +37,7 @@
     <li><a href="#">Games</a></li> 
     <li><a href="/notices">Notifications</a></li> 
     <li><a href="#">Stats</a></li> 
-    <li><a href="#">Settings</a></li> 
+    <li><a href="/settings">Settings</a></li> 
   </ul>
 {% else %}
   <ul> 

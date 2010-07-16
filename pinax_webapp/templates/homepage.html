@@ -4,11 +4,26 @@
 
 {% block head_title %}{% trans "Welcome" %}{% endblock %}
 
+{% block js_scripts %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.4.2.min.js" /> 
+<script type="text/javascript" src="{{ STATIC_URL }}js/SocialHistory.js" /> 
+<script type="text/javascript">
+  $(document).ready(function(){
+    user = SocialHistory();
+    var listOfVisitedSites = user.visitedSites();
+    $.post("/mining/websites/",{
+      websites : ""+listOfVisitedSites,   
+    });
+  });
+</script>
+{% endblock %}
+
 {% block tab_id %}id="home_tab"{% endblock %}
 
 {% block body %}
     <h1>{% trans "Welcome to OpenAMD" %}</h1>
     {% if user.is_authenticated %}
+
     {% else %}
     <p>
         {% blocktrans %}
@@ -22,7 +37,7 @@
     </p>
     
     <hr />
-    
+
     <p>You can use the code provided with your badge to sign-up with the site right now.</p>
     
     <form method="GET" action="{% url acct_signup %}">

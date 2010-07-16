@@ -50,7 +50,8 @@ urlpatterns = patterns('',
 
     (r'^notices/', include('notification.urls')),
     (r'^messages/', include('messages.urls')),
-    
+
+    (r'^mining/', include('mining.urls')),
 
     (r'^avatar/', include('avatar.urls')),
     (r'^announcements/', include('announcements.urls')),
