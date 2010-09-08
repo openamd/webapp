@@ -19,6 +19,7 @@ from profiles.forms import ProfileForm
 from avatar.templatetags.avatar_tags import avatar
 import mining.cass
 import time
+from account.models import update_other_services
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -56,7 +57,8 @@ def profile(request, username, template_name="profiles/profile.html", extra_cont
         extra_context = {}
     
     other_user = get_object_or_404(User, username=username)
-    mining.cass.update_user_field(request.user.username,"stalk_"+str(time.time()),username)
+    update_other_services(request.user,stalk=username)
+    #area = mining.cass.get_user_field(other_user,"area")
 
     if request.user.is_authenticated():
         is_friend = Friendship.objects.are_friends(request.user, other_user)
@@ -126,6 +128,7 @@ def profile(request, username, template_name="profiles/profile.html", extra_cont
     
     return render_to_response(template_name, dict({
         "is_me": is_me,
+        #"area": area,
         "is_friend": is_friend,
         "other_user": other_user,
         "other_friends": other_friends,

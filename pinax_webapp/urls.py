@@ -9,19 +9,20 @@ from django.contrib import admin
 admin.autodiscover()
 
 from account.openid_consumer import PinaxConsumer
-from waitinglist.forms import WaitingListEntryForm
+#from waitinglist.forms import WaitingListEntryForm
 
 # @@@ turn into template tag
 def homepage(request):
     if request.method == "POST":
-        form = WaitingListEntryForm(request.POST)
+        #form = WaitingListEntryForm(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse("waitinglist_sucess"))
     else:
-        form = WaitingListEntryForm()
+        #form = WaitingListEntryForm()
+	pass
     return direct_to_template(request, "homepage.html", {
-        "form": form,
+        #"form": form,
     })
 
 if settings.ACCOUNT_OPEN_SIGNUP:
@@ -36,6 +37,8 @@ urlpatterns = patterns('',
 
     url(r'^success/$', direct_to_template, {"template": "waitinglist/success.html"}, name="waitinglist_sucess"),
     url(r'^register/$', direct_to_template, {"template": "register.html"}),
+    url(r'^map$', direct_to_template, {"template": "map.html"}),
+    url(r'^map_private$', direct_to_template, {"template": "map_private.html"}),
 
     url(r'^admin/invite_user/$', 'signup_codes.views.admin_invite_user', name="admin_invite_user"),
     url(r'^account/signup/$', signup_view, name="acct_signup"),
@@ -59,7 +62,9 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
 )
 
+"""
 if settings.SERVE_MEDIA:
     urlpatterns += patterns('',
         (r'^site_media/', include('staticfiles.urls')),
     )
+"""

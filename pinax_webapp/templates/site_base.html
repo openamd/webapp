@@ -24,7 +24,7 @@
 {% block headers %}
 <div id="header"> 
   <a href="{% url home %}">
-    <img src="{{ STATIC_URL }}images/openamd_black.png" style="float:left;"/>
+    <img src="{{ STATIC_URL }}images/openamd_black.png" style="float:left;border:none;"/>
   </a>
     <img src="{{ STATIC_URL }}images/tnh_temp_logo2.png" style="float:right;" /> 
 </div> 
@@ -35,10 +35,12 @@
 {% if user.is_authenticated %}
   <ul> 
     <li><a href="/">Home</a></li> 
+    <li><a href="/map">Map</a></li> 
     <li><a href="/messages">Inbox</a></li>
     <li><a href="/profiles/friends/{{ user.username }}">Friends</a></li> 
     <li><a href="/profiles/profile/{{ user.username }}">Profile</a></li> 
-    <li><a href="#">Games</a></li> 
+    <li><a href="/profiles/">See all profiles</a></li> 
+    <li><a href="http://67.196.202.12">Games</a></li> 
     <li><a href="/notices">Notifications</a></li> 
     <li><a href="#">Stats</a></li> 
     <li><a href="/settings">Settings</a></li> 
@@ -46,6 +48,7 @@
 {% else %}
   <ul> 
     <li><a href="/">Home</a></li> 
+    <li><a href="/map">Map</a></li> 
   </ul>
 {% endif %} 
 </div> 

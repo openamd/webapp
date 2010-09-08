@@ -1,0 +1,24 @@
+<html>
+  <head>
+   <!--[if IE]><script type="text/javascript" src="explorercanvas/excanvas.js"></script><![endif]-->
+   <script src="/site_media/media/js/jquery-1.4.2.min.js" type="application/javascript"></script>
+   <script src="/site_media/media/bowtie/bowtie_public.js" type="application/javascript"></script>
+   <style>
+      div.uimg { position: absolute; z-index: 50; }
+      div.uimg .tooltip { display:none; }
+
+      div.uimg+.hover { background-color: #ffffc0; border: 1px solid gray; z-index: 25000; }
+      div.uimg+.hover .tooltip { display: inline; }
+
+      div.uimg+.clicked { background-color: #ffc0c0; border: 1px solid gray; z-index: 25000; }
+      div.uimg+.clicked .tooltip { display: inline; }
+   </style>
+
+  </head>
+  <body onload="init()">
+    <div id="mapholder">
+    <img src="/site_media/media/bowtie/mezzanine_redux.jpg" />
+   </div>
+
+  </body>
+ </html>

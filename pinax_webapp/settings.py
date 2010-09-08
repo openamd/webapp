@@ -11,7 +11,7 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # tells Pinax to use the default theme
 PINAX_THEME = 'default'
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 # tells Pinax to serve media through django.views.static.serve.
@@ -24,7 +24,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-DATABASE_NAME = 'dev.db'       # Or path to database file if using sqlite3.
+DATABASE_NAME = '/var/www/pinax_webapp/dev.db'       # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -51,6 +51,7 @@ USE_I18N = True
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'site_media', 'media')
+#MEDIA_ROOT = '/var/www/pinax_webapp/media/'
 
 # URL that handles the media served from MEDIA_ROOT.
 # Example: "http://media.lawrence.com"
@@ -58,11 +59,11 @@ MEDIA_URL = '/site_media/media/'
 
 # Absolute path to the directory that holds static files like app media.
 # Example: "/home/media/media.lawrence.com/apps/"
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'site_media', 'static')
+STATIC_ROOT = '/var/www/pinax_webapp/site_media/'
 
 # URL that handles the static files like app media.
 # Example: "http://media.lawrence.com"
-STATIC_URL = '/site_media/static/'
+STATIC_URL = '/site_media/media/'
 
 # Additional directories which hold static files
 STATICFILES_DIRS = (
@@ -76,7 +77,7 @@ STATICFILES_DIRS = (
 ADMIN_MEDIA_PREFIX = posixpath.join(STATIC_URL, "admin/")
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '&=r@m*+h^i12^!gm=760b&qw=t4dy#5juo_)&9@7q2wtr4(@ur'
+SECRET_KEY = ''
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -116,7 +117,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "announcements.context_processors.site_wide_announcements",
     "account.context_processors.openid",
     "account.context_processors.account",
-    "socialauth.context_processors.facebook_api_key",
+    #"socialauth.context_processors.facebook_api_key",
 
 )
 
@@ -237,8 +238,7 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"^/account/password_reset",
     r"^/account/confirm_email",
 
-    r"^/auth",
-
+    r"/map",
     r"/xd_receiver.htm",
 ]
 
